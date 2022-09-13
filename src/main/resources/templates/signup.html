@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      <!--layout:decorate="layout">-->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body><!--class="text-center"-->
+<!--<div class="alert alert-danger m-5" th:text="${message}"></div>-->
+<div class="alert alert-success m-1" role="alert" th:text="'Sign up Successfull with email '+ ${emailId}" th:if="${emailId}"></div>
+<div class="alert alert-danger container" role="alert" th:text="${message}" th:if="${message}"></div>
+<div class="alert alert-success container" role="alert" th:text="${success}" th:if="${success}"></div>
+<!--<section layout:fragment="content">-->
+<div class="container">
+
+
+    <form class="form-signin" th:action="@{/signup}" th:object="${user}" method="post">
+        <div id="foto" style="text-align: center;">
+        <img class="mb-3" src="http://www.pinsdemexico.com/images/logo/logo.png" alt="foto1" >
+        </div>
+        <!--<h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>-->
+
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input th:required="required" type="text" th:field="*{username}" name="username" id="inputUsername" class="form-control mb-3" placeholder="Full Name" required autofocus>
+
+
+        <label for="Email" class="sr-only">Email</label>
+        <input th:required="required" type="email" th:field="*{email}" name="email" id="Email" class="form-control mb-3" placeholder="Email" required autofocus>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input th:minlength="4"  th:maxlength="30"  th:required="required" type="password" th:field="*{password}" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+    <p>
+    <h6 align="center">
+        or click <a th:href="@{/login}"> here </a> to login
+    </h6>
+    </p>
+<!--</section>-->
+</div>
+</body>
+</html>
