@@ -32,7 +32,6 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
         if (authentication == null || AnonymousAuthenticationToken.class.
                 isAssignableFrom(authentication.getClass())) {
             return null;
-            //return false;
         }
         String role = authentication.getAuthorities().toString();
         String targetUrl = null;
@@ -42,7 +41,6 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
             targetUrl = "redirect:admin";
         }
         return targetUrl;
-        //return authentication.isAuthenticated();
     }
 
 
@@ -51,7 +49,6 @@ public class AuthSuccessHandler extends SavedRequestAwareAuthenticationSuccessHa
         if (auth == null || AnonymousAuthenticationToken.class.
                 isAssignableFrom(auth.getClass())) {
             return null;
-            //return false;
         }
         MyUserPrincipal myUserPrincipal = (MyUserPrincipal)auth.getPrincipal();
         if(myUserPrincipal==null || myUserPrincipal.getUsername().equals("")){

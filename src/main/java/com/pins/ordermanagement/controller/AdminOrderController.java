@@ -42,14 +42,6 @@ public class AdminOrderController {
     @Autowired
     private AuthSuccessHandler authSuccessHandler;
 
-
-    /*@ResponseBody*/
-/*    @RequestMapping("/")
-    public String index(Model model){
-        model.addAttribute("orders",orderService.getAll());
-        return "index";
-    }*/
-
     @GetMapping("/")
     public String index(Model model,
             @RequestParam(value = "orderNumber", required = false) String orderNumber,

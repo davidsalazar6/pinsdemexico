@@ -32,7 +32,6 @@ public class CustomerOrderController {
 
     @GetMapping()
     public String index(Model model,
-                        /*@RequestParam(value = "email")  String email,*/
                         @RequestParam(value = "orderNumber", required = false, defaultValue = "") String orderNumber,
                         @RequestParam(value = "page", required = false, defaultValue = "0") int pageNumber,
                         @RequestParam(value = "size", required = false, defaultValue = "5") int pageSize){
@@ -52,7 +51,6 @@ public class CustomerOrderController {
         }else if(role.contains("ADMIN")){
             orderPage = orderService.findOrderByCustomerEmail("",orderNumber.trim(),pageNumber,pageSize);
         }
-        //Page<Order> orderPage = orderService.findOrderByCustomerEmail(myUserPrincipal.getUsername(),orderNumber.trim(),pageNumber,pageSize);
         model.addAttribute("orders", orderPage.getContent());
         model.addAttribute("pages", new int[orderPage.getTotalPages()]);
         model.addAttribute("currentPage", pageNumber);
